@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PANEL ZODA V3</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<script>
+// Partículas dinámicas
+for(let i=0;i<30;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  let size=Math.random()*6+3;
+  p.style.width=size+'px';
+  p.style.height=size+'px';
+  p.style.left=Math.random()*100+'%';
+  p.style.bottom='-10px';
+  p.style.animationDuration=(4+Math.random()*8)+'s';
+  document.body.appendChild(p);
+}
+</script>
+
+<div class="panel">
+  <h2>PANEL ZODA V3</h2>
+  <h3>LA MEJOR SENSIBILIDAD PARA GENERAR MÁS DISPAROS A LA CABEZA CREADO POR ZODA FF</h3>
+
+  <div class="option" id="optAimlock">
+    <label>AIMLOCK</label>
+    <label class="switch">
+      <input type="checkbox" id="aimlockCheck"><span class="slider-round"></span>
+    </label>
+  </div>
+
+  <div class="option" id="optAimbot">
+    <label>AIMBOT</label>
+    <div class="rangeContainer">
+      <input type="range" id="aimbotRange" min="0" max="100" value="50">
+      <span id="aimbotValue">50%</span>
+    </div>
+  </div>
+
+  <div class="option" id="optRecoil">
+    <label>NO RECOIL</label>
+    <label class="switch">
+      <input type="checkbox" id="recoilCheck"><span class="slider-round"></span>
+    </label>
+  </div>
+
+  <div class="option" id="optFPS">
+    <label>FPS</label>
+    <label class="switch">
+      <input type="checkbox" id="fpsCheck"><span class="slider-round"></span>
+    </label>
+  </div>
+
+  <button class="apply-btn" id="applyBtn" onclick="aplicar(event)">APLICAR TODO</button>
+  <div id="toast">✅ PANEL ACTIVADO</div>
+
+  <div class="footer">
+    YOUTUBE: ZODA FF<br>TIKTOK: ZODA FF
+  </div>
+</div>
+
+<script>
+// Actualizar fondo verde del slider
+const range=document.getElementById('aimbotRange');
+const valueLabel=document.getElementById('aimbotValue');
+function updateRange(){
+  let val=range.value;
+  valueLabel.innerText=val+"%";
+  range.style.background = 'linear-gradient(to right,#4caf50 '+val+'%,#666 '+val+'%)';
+}
+range.addEventListener('input',updateRange);
+updateRange();
+
+// Botón aplicar
+function aplicar(e){
+  const btn=document.getElementById('applyBtn');
+  btn.classList.add('clicked','active');
+  setTimeout(()=>btn.classList.remove('clicked','active'),1000);
+
+  const toast=document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),2500);
+}
+</script>
+
+</body>
+</html>
